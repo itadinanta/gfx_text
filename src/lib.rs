@@ -554,7 +554,7 @@ fn create_texture_r8_static<R: Resources, F: Factory<R>>(
 ) -> Result<gfx::handle::ShaderResourceView<R, f32>, CombinedError> {
     let kind = texture::Kind::D2(width, height, texture::AaMode::Single);
     let (_, texture_view) = try!(
-        factory.create_texture_immutable_u8::<(gfx::format::R8, gfx::format::Unorm)>(kind, &[data])
+        factory.create_texture_immutable_u8::<(gfx::format::R8, gfx::format::Unorm)>(kind, gfx::texture::Mipmap::Provided, &[data])
     );
     Ok(texture_view)
 }
